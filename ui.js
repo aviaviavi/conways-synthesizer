@@ -34,10 +34,12 @@ $(document).ready(function () {
 	$("#stop").button().click(function() {
 			clearInterval(metronome);
 			running = false; 
+			$("#slider-vertical").slider("option", "disabled", false);
 			clearInterval(simulateThread)
 		});
 
 	$("#pause").button().click(function() {
+		$("#slider-vertical").slider("option", "disabled", true);
 		running = false;
 		clearInterval(simulateThread);
 	});
@@ -50,9 +52,6 @@ $(document).ready(function () {
             value: 300,
             slide: function( event, ui ) {
                 $( "#amount" ).val( ui.value );
-                running = false; 
-                clearInterval(simulateThread);
-                simulate();
             }
         });
         $( "#amount" ).val( $( "#slider-vertical" ).slider( "value" ) );
@@ -83,7 +82,7 @@ $(document).ready(function () {
 			}
 		});
 
-/* use radio button to change waveform */
+		/* use radio button to change waveform */
 		$(".waveform").click(function () {
 			waveform = $(this).val();
 		});
@@ -183,6 +182,7 @@ makeButton = function (x, y) {
 simulate = function() {
 	if (!running) {
 		interval = 60000*16/($("#amount").val());
+		$("#slider-vertical").slider("option", "disabled", true);
 		simulateThread = setInterval(function() {timeStep();}, interval);
 		player.play(boxes);
 		running = true;
