@@ -12,8 +12,8 @@
 		}
 
 		.grid_container {
-			width: 495px;
-			height: 495px;
+			width: 480px;
+			height: 480px;
 			padding: 6px;
 			background-color: #111111;
 			border-radius: 7px;
@@ -22,14 +22,7 @@
 
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script src="http://code.jquery.com/ui/1.8.24/jquery-ui.min.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function () {
-			var string = "<span><div class='square'></div><div class='square'></div><div class='square'></div><div class='square'></div><div class='square'></div><div class='square'></div><div class='square'></div><div class='square'></div><div class='square'></div><div class='square'></div><div class='square'></div><div class='square'></div><div class='square'></div><div class='square'></div><div class='square'></div><div class='square'></div</span>";
-			for (i = 0; i < 16; i++) {
-				$("#container").append(string);
-			}
-		});
-	</script>
+	<script src="ui.js"></script>
 
 	<body>
 		<div class="grid_container" id="container"></div>
