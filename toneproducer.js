@@ -36,6 +36,8 @@
 	tones = new toneproducer();
 	/* our instance of audiolet */
 	audiolet = tones.audiolet;
-	/* an array containing frequencies for each fo the 16 rows. */
+	/* an array containing frequencies for each fo the 16 rows, in a major key. */
 	majorChordNotes = [261.63, 293.66, 349.23, 392, 440, 523.25, 587.33, 698.46, 783.99, 880, 1046.5, 1174.66, 1396.9, 1567.98, 1760, 2093];
+	/* an array containing frequencies for each fo the 16 rows, in a minor key. */
+	majorChordNotes = [261.63, 311.13, 349.23, 392, 440, 523.25, 622.25, 698.46, 783.99, 880, 1046.5, 1244.51, 1396.9, 1567.98, 1760, 2093];
 
