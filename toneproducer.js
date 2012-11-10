@@ -57,4 +57,7 @@
 	}
 	/* an array containing frequencies for each fo the 16 rows, in a minor key. */
 	minorChordNotes = [261.63, 311.13, 349.23, 392, 440, 523.25, 622.25, 698.46, 783.99, 880, 1046.5, 1244.51, 1396.9, 1567.98, 1760, 2093];
+	for (i = 0; i < 16; i++) {
+		minorChordNotes[i] = minorChordNotes[i]/2;
+	}
 
