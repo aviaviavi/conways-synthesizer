@@ -18,7 +18,7 @@ var MusicPlayer = function () {
 			} else {
 				i = 0;
 			}
-		}, interval/8)
+		}, interval/16.0)
 		
 
 	}

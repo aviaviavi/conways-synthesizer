@@ -151,7 +151,7 @@ makeButton = function (x, y) {
 
 simulate = function() {
 	if (!running) {
-		interval = 60000*16/($("#amount").val())
+		interval = 60000*16/($("#amount").val());
 		simulateThread = setInterval(function() {timeStep();}, interval);
 		running = true;
 	}
