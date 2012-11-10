@@ -183,8 +183,8 @@ simulate = function() {
 	if (!running) {
 		interval = 60000*16/($("#amount").val());
 		$("#slider-vertical").slider("option", "disabled", true);
-		simulateThread = setInterval(function() {timeStep();}, interval);
 		player.play(boxes);
+		simulateThread = setInterval(function() {timeStep();}, interval);
 		running = true;
 	}
 }
