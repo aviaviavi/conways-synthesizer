@@ -28,7 +28,7 @@ $(document).ready(function () {
 	}
 	buttonify();
 
-	$("#simulate").button().click(function() {simulate(); player.play(boxes);});
+	$("#simulate").button().click(function() {simulate();});
 
 	$("#stop").button().click(function() {
 			clearInterval(metronome);
@@ -179,6 +179,7 @@ simulate = function() {
 	if (!running) {
 		interval = 60000*16/($("#amount").val());
 		simulateThread = setInterval(function() {timeStep();}, interval);
+		player.play(boxes);
 		running = true;
 	}
 }
