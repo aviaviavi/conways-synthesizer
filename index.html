@@ -13,12 +13,25 @@
 
 		.grid_container {
 			width: 480px;
-			height: 480px;
+			height: 530px;
 			padding: 6px;
 			background-color: #111111;
 			border-radius: 7px;
 			float: left;
 			display: inline-block;
+		}
+
+		.indicate {
+			background-color: black;
+			width:20px;
+			height:20px;
+			border-radius:10px;
+			margin: 5px;
+			border: 2px;
+			float: left;
+		}
+		#indicator {
+			float: left;
 		}
 	</style>
 
@@ -32,7 +45,7 @@
 
 	<body>
 		<span>
-			<div class="grid_container" id="container"></div>
+			<div class="grid_container" id="container"><span id="indicator"></span></div>
 			<div style="float: left; display: inline-block; margin: 30px" >
 				<p>
 		    		<label for="amount">BPM:</label>

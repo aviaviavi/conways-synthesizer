@@ -16,6 +16,7 @@ $(document).ready(function () {
 	var currBox,
 	string;
 	for (y = 0; y < 16; y++) {
+		$("#indicator").append("<div class='indicate' id='indicator" + y + "'></div>");
 		string = "<span>";
 		for (x = 0; x < 16; x++) {
 			string += "<div class='square' id=" + x + "x" + y + " ></div>";

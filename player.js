@@ -4,6 +4,13 @@ var MusicPlayer = function () {
 		/* TEMPORARY CODE, this goes through the 16 total columns one time upon being called. */
 		var	playOneColumn = function (i, grid) {
 					var column = grid[i];
+					/* keep track of which column we are on */
+					$("#indicator" + i).css("background-color", "gold");
+					if (i == 0) {
+						$("#indicator15").css("background-color", "black");
+					} else {
+						$("#indicator" + (i-1)).css("background-color", "black");
+					}
 					for (var j = 0; j<16; j++) {
 						if (column[j].enabled) {
 							if (majorKey) {
