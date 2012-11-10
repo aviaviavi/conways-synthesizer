@@ -52,7 +52,6 @@ $(document).ready(function () {
                 running = false; 
                 clearInterval(simulateThread);
                 simulate();
-
             }
         });
         $( "#amount" ).val( $( "#slider-vertical" ).slider( "value" ) );
