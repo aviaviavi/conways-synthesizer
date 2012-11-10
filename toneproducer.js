@@ -12,7 +12,6 @@
     		gain = new Gain(audiolet, .1);
     		sine.connect(gain);
     		gain.connect(audiolet.output);
-    		console.log("starting sound");
     		return new soundData(sine, gain);
     	}
 
@@ -22,14 +21,13 @@
         		soundData.gain.disconnect(output);
         		soundData.sound.remove();
         		soundData.gain.remove();
-        		console.log("ending sound");
         		return;
    		 }
   
    /* pulse a sound, which starts and stops a sound. Currently stops it after 120 ms, however this should depend on a bpm variable.*/
 		this.pulseSound = function(frequency, audiolet) {
 			var soundData = this.makeSound(frequency, audiolet);
-			setTimeout(function(){tones.stopAndDestroySound(soundData, audiolet.output)}, interval/16.0);
+			setTimeout(function(){tones.stopAndDestroySound(soundData, audiolet.output)}, interval/8);
 		}
 
 	};

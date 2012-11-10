@@ -5,6 +5,7 @@ var running = false;
 var simulateThread;
 var isDown = false;
 var interval;
+var majorKey = true;
 
 for (i = 0; i < 16; i++) {
 	boxes.push([]);
@@ -71,6 +72,14 @@ $(document).ready(function () {
 			}
 			for (column = 0; column < size; column++) {
 				boxes[column].map(randomize);
+			}
+		});
+
+		$(".key").click(function() {
+			if ($(this).val() ===  "Major") {
+				majorKey = true;
+			} else {
+				majorKey = false;
 			}
 		});
 
@@ -151,7 +160,7 @@ makeButton = function (x, y) {
 
 simulate = function() {
 	if (!running) {
-		interval = 60000*16/($("#amount").val())
+		interval = 60000*16/($("#amount").val());
 		simulateThread = setInterval(function() {timeStep();}, interval);
 		running = true;
 	}
