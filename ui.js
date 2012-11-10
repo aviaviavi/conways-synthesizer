@@ -6,6 +6,7 @@ var simulateThread;
 var isDown = false;
 var interval;
 var majorKey = true;
+var buttons = ["#simulate", "#stop", "#pause", "#random"];
 
 for (i = 0; i < 16; i++) {
 	boxes.push([]);
@@ -26,27 +27,25 @@ $(document).ready(function () {
 	}
 	buttonify();
 
-	$("#simulate").button({
-		icons: {
-			text : true,
-    		primary: "ui-icon-play"
-    	}
-	}).click(function() {simulate();}	
-	);
+	$("#simulate").button().click(function() {simulate();});
 
-	$("#stop").button({
-		icons: {
-			text : true,
-			primary: "ui-icon-stop"
-		}
-		}).click(function() {console.log('stopped'); running = false; clearInterval(simulateThread)});
+	$("#stop").button().click(function() {
+			clearInterval(metronome);
+			running = false; 
+			clearInterval(simulateThread)
+		});
+
+	$("#pause").button().click(function() {
+		running = false;
+		clearInterval(simulateThread);
+	});
 
 	$( "#slider-vertical" ).slider({
             orientation: "vertical",
             range: "min",
             min: 150,
-            max: 1000,
-            value: 240,
+            max: 350,
+            value: 300,
             slide: function( event, ui ) {
                 $( "#amount" ).val( ui.value );
                 running = false; 
@@ -82,6 +81,12 @@ $(document).ready(function () {
 				majorKey = false;
 			}
 		});
+
+		var makeButtonsSmaller = function(button){
+			$(button).css({"font-size":"12px", "width":"120px"});
+		}
+
+		buttons.map(makeButtonsSmaller);
 
 });
 
