@@ -44,7 +44,7 @@ $(document).ready(function () {
             orientation: "vertical",
             range: "min",
             min: 150,
-            max: 300,
+            max: 1000,
             value: 240,
             slide: function( event, ui ) {
                 $( "#amount" ).val( ui.value );
