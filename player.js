@@ -6,7 +6,11 @@ var MusicPlayer = function () {
 					var column = grid[i];
 					for (var j = 0; j<16; j++) {
 						if (column[j].enabled) {
-							tones.pulseSound(majorChordNotes[15-j], audiolet);
+							if (majorKey) {
+								tones.pulseSound(majorChordNotes[15-j], audiolet);
+							} else {
+								tones.pulseSound(minorChordNotes[15-j], audiolet);
+							}
 						}
 					}
 				};
