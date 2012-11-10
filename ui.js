@@ -8,6 +8,7 @@ var interval;
 var majorKey = true;
 var buttons = ["#simulate", "#stop", "#pause", "#random", "#clear"];
 var waveform = "sine";
+var runningMusic = false;
 
 for (i = 0; i < 16; i++) {
 	boxes.push([]);
@@ -34,6 +35,7 @@ $(document).ready(function () {
 	$("#stop").button().click(function() {
 			clearInterval(metronome);
 			running = false; 
+			runningMusic = false;
 			$("#slider-vertical").slider("option", "disabled", false);
 			clearInterval(simulateThread)
 		});
@@ -183,9 +185,10 @@ simulate = function() {
 	if (!running) {
 		interval = 60000*16/($("#amount").val());
 		$("#slider-vertical").slider("option", "disabled", true);
-		player.play(boxes);
+		if (!runningMusic) player.play(boxes);
 		simulateThread = setInterval(function() {timeStep();}, interval);
 		running = true;
+		runningMusic = true;
 	}
 }
 
