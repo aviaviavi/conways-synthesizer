@@ -59,10 +59,8 @@ $(document).ready(function () {
 
 		$(document).mousedown(function() {
 		    isDown = true;      // When mouse goes down, set isDown to true
-		    console.log('mousedown');
 		}).mouseup(function() {
 			isDown = false;    // When mouse goes up, set isDown to false
-			console.log('mouseup');
 		});
 
 		$("#random").button().click(function() {
@@ -144,6 +142,10 @@ makeButton = function (x, y) {
 	var box = boxes[x][y];
 	$("#" + x + "x" + y).click(function () {
 		box.swap();
+	}).mouseover(function() {
+		if (isDown) {
+			box.swap();
+		}
 	});
 }
 
