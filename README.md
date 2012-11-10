@@ -6,5 +6,7 @@ cross between conway's <a href="www.bitstorm.org/gameoflife/">game of life</a> a
 
 used audiolet javascript library for sound synthesis
 
+hosted on http://aviaviavi.conways-synthesizer.jit.su
+
 avi press and stefan isenberger
 
