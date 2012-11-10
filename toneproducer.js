@@ -8,7 +8,21 @@
 		this.audiolet = new Audiolet();
 		/* creates a single sound, with a particular frequency on a particular audiolet controller. */
     	this.makeSound = function(frequency, audiolet) {
-    		sine = new Sine(audiolet, frequency);
+    		/* waveform switch */
+    		switch (waveform) {
+    			case "sine":
+    			sine = new Sine(audiolet, frequency);
+    			break;
+    			case "square":
+    			sine = new Square(audiolet, frequency);
+    			break;
+    			case "triangle":
+    			sine = new Triangle(audiolet, frequency);
+    			break;
+    			case "saw":
+    			sine = new Saw(audiolet, frequency);
+    			break;
+    		}
     		gain = new Gain(audiolet, .1);
     		sine.connect(gain);
     		gain.connect(audiolet.output);

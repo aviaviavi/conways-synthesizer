@@ -7,6 +7,7 @@ var isDown = false;
 var interval;
 var majorKey = true;
 var buttons = ["#simulate", "#stop", "#pause", "#random", "#clear"];
+var waveform = "sine";
 
 for (i = 0; i < 16; i++) {
 	boxes.push([]);
@@ -80,6 +81,11 @@ $(document).ready(function () {
 			} else {
 				majorKey = false;
 			}
+		});
+
+/* use radio button to change waveform */
+		$(".waveform").click(function () {
+			waveform = $(this).val();
 		});
 
 		$("#clear").button().click(function() {
