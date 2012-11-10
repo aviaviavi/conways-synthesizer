@@ -4,6 +4,7 @@ var running = false;
 //our pointer to the setInterval call on timestep()
 var simulateThread;
 var isDown = false;
+var interval;
 
 for (i = 0; i < 16; i++) {
 	boxes.push([]);
@@ -137,7 +138,8 @@ makeButton = function (x, y) {
 
 simulate = function() {
 	if (!running) {
-		simulateThread = setInterval(function() {timeStep();}, 60000*16/($("#amount").val()));
+		interval = 60000*16/($("#amount").val())
+		simulateThread = setInterval(function() {timeStep();}, interval);
 		running = true;
 	}
 }
