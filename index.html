@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+	<style type="text/css">
+		.square {
+			width: 20px;
+			height: 20px;
+			background-color: #696969;
+			float: left;
+			margin: 5px;
+			display: inline-block;
+			border-color: white;
+			border: 2px;
+		}
+
+		.grid_container {
+			width: 495px;
+			height: 495px;
+			padding: 6px;
+			background-color: #111111;
+			border-radius: 7px;
+		}
+	</style>
+
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script src="http://code.jquery.com/ui/1.8.24/jquery-ui.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			var string = "<span><div class='square'></div><div class='square'></div><div class='square'></div><div class='square'></div><div class='square'></div><div class='square'></div><div class='square'></div><div class='square'></div><div class='square'></div><div class='square'></div><div class='square'></div><div class='square'></div><div class='square'></div><div class='square'></div><div class='square'></div><div class='square'></div</span>";
+			for (i = 0; i < 16; i++) {
+				$("#container").append(string);
+			}
+		});
+	</script>
+
+	<body>
+		<div class="grid_container" id="container"></div>
+	</body>
+</html> 
