@@ -9,6 +9,7 @@ var majorKey = true;
 var buttons = ["#simulate", "#stop", "#pause", "#random", "#clear"];
 var waveform = "sine";
 var runningMusic = false;
+var clipFactor = 16;
 
 for (i = 0; i < 16; i++) {
 	boxes.push([]);
@@ -87,6 +88,24 @@ $(document).ready(function () {
 		/* use radio button to change waveform */
 		$(".waveform").click(function () {
 			waveform = $(this).val();
+		});
+
+		/* use radio button to change delay and note length */
+		$(".genre").click(function () {
+			switch($(this).val()) {
+				case "percussive":
+					clipFactor=16;
+				break;
+				case "pensive":
+					clipFactor=8;
+				break;
+
+				case "ethereal":
+					clipFactor=4;
+				break;
+
+			}
+
 		});
 
 		$("#clear").button().click(function() {

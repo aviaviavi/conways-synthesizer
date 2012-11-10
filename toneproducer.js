@@ -1,6 +1,7 @@
-	var soundData = function (sound, gain) {
+	var soundData = function (sound, gain, delay) {
 		this.sound = sound;
 		this.gain = gain;
+		this.delay = delay;
 	}
 
 	/* generate a new Audiolet instance */
@@ -25,15 +26,20 @@
     		}
     		gain = new Gain(audiolet, .1);
     		sine.connect(gain);
+    		delay = new Delay(audiolet, interval/4, interval/8);
+    		sine.connect(delay,0,1);
+    		delay.connect(gain);
     		gain.connect(audiolet.output);
-    		return new soundData(sine, gain);
+    		return new soundData(sine, gain, delay);
     	}
 
     	/* stops the sound, and removes it from the audiolet controller */
 		this.stopAndDestroySound = function(soundData, output) {
         		soundData.sound.disconnect(output);
         		soundData.gain.disconnect(output);
+        		soundData.delay.disconnect(output);
         		soundData.sound.remove();
+        		soundData.delay.remove();
         		soundData.gain.remove();
         		return;
    		 }
@@ -41,7 +47,8 @@
    /* pulse a sound, which starts and stops a sound. Currently stops it after 120 ms, however this should depend on a bpm variable.*/
 		this.pulseSound = function(frequency, audiolet) {
 			var soundData = this.makeSound(frequency, audiolet);
-			setTimeout(function(){tones.stopAndDestroySound(soundData, audiolet.output)}, interval/16);
+			/* stop the note after interval/clipFactor milliseconds. */
+			setTimeout(function(){tones.stopAndDestroySound(soundData, audiolet.output)}, interval/clipFactor);
 		}
 
 	};
