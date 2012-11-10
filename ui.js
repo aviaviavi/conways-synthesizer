@@ -6,7 +6,7 @@ var simulateThread;
 var isDown = false;
 var interval;
 var majorKey = true;
-var buttons = ["#simulate", "#stop", "#pause", "#random"];
+var buttons = ["#simulate", "#stop", "#pause", "#random", "#clear"];
 
 for (i = 0; i < 16; i++) {
 	boxes.push([]);
@@ -82,8 +82,19 @@ $(document).ready(function () {
 			}
 		});
 
+		$("#clear").button().click(function() {
+				var clear = function(box) {
+					if (box.enabled) {
+						box.swap();
+					}
+				} 
+				for (i = 0; i < size; i++) {
+					boxes[i].map(clear);
+				}
+		});
+
 		var makeButtonsSmaller = function(button){
-			$(button).css({"font-size":"12px", "width":"120px"});
+			$(button).css({"font-size":"12px", "width":"92px"});
 		}
 
 		buttons.map(makeButtonsSmaller);
