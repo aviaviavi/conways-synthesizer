@@ -22,7 +22,7 @@ $(document).ready(function (){
    /* pulse a sound, which starts and stops a sound. Currently stops it after 120 ms, however this should depend on a bpm variable.*/
 	function pulseSound(frequency, audiolet) {
 		var sound = makeSound(frequency, audiolet);
-		setTimeout(function(){stopAndDestroySound(sound, audiolet.output)}, 120);
+		setTimeout(function(){stopAndDestroySound(sound, audiolet.output)}, interval/8);
 	}
 
 	/* create an instance of audiolet */
