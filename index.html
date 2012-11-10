@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+			font-variant: verdana;
+		}
+
 		.square {
 			width: 20px;
 			height: 20px;
@@ -11,14 +17,16 @@
 			border: 2px;
 		}
 
-		.grid_container {
+		#container {
 			width: 480px;
-			height: 530px;
-			padding: 6px;
+			height: 510px;
 			background-color: #111111;
 			border-radius: 7px;
-			float: left;
 			display: inline-block;
+			text-align: center;
+			margin-left: 15px;
+			margin-right: 15px;
+			margin-bottom: 15px;
 		}
 
 		.indicate {
@@ -33,6 +41,57 @@
 		#indicator {
 			float: left;
 		}
+
+		#content {
+			width: 65%;
+			height: 600px;
+			margin-right: auto;
+			margin-left: auto;
+			display: inline-block;
+		}
+
+		#options {
+			width: 120px;
+			height: auto;
+			float:left;
+			padding-top:20px;
+			font-size: 14px;
+		}
+
+		#center {
+			float: left;
+			height: auto;
+			width: auto;
+			display: inline-block;
+		}
+
+		#buttons {
+			height: auto;
+			width: 120px;
+			float: left;
+			margin-top: 15px;
+			padding-top: 15px;
+		}
+		#buttons button {
+			margin-bottom: 20px;
+			border: 1px solid #696969;
+			background-color: #444444;
+		}
+
+		#head {
+			height:48px;
+			text-align: center;
+		}
+
+		#head h1 {
+			padding: 0px;
+		}
+
+		#options label {
+			font-size: 18px;
+			font-weight: bold;
+		}
+
 	</style>
 
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
@@ -44,20 +103,20 @@
 	<script src="player.js"></script>
 
 	<body>
-		<span>
-			<div class="grid_container" id="container"><span id="indicator"></span></div>
-			<div style="float: left; display: inline-block; margin: 30px" >
-				<p>
-		    		<label for="amount">BPM:</label>
-		    		<input type="text" id="amount" style="border: 0; color: #f6931f; font-weight: bold;" />
-				</p>
-				<div id="slider-vertical" style="height: 200px; margin:30px"></div>
+		
+		<div id="content">
+			<div id="options">
+		    		<label for="amount">BPM: <input type="text" id="amount" style="border: 0; color: #f6931f; font-weight: bold;" /></label>
+		    		 <br />
+				<div id="slider-vertical" style="height: 200px; margin-left: 30px; margin-bottom: 15px;"></div>
 				<form>
+					<label for="Key"> Key </label><br />
 					<input class="key" type="radio" value="Major" name="key" checked="true">Major<br>
 					<input class="key" type="radio" value="Minor" name="key">Minor<br>
 				</form>
 				<br />
 				<form>
+					<label for="Waveform"> Waveform</label><br />
 					<input class="waveform" type="radio" value="sine" name="waveform" checked="true">Sine<br />
 					<input class="waveform" type="radio" value="square" name="waveform" >Square<br />
 					<input class="waveform" type="radio" value="triangle" name="waveform" >Triangle<br />
@@ -65,21 +124,26 @@
 				</form>
 				<br />
 				<form>
+					<label for="Mood">Mood</label><br />
 					<input class="genre" type="radio" value="percussive" name="genre" checked="true">Percussive<br>
 					<input class="genre" type="radio" value="pensive" name="genre">Pensive<br>
 					<input class="genre" type="radio" value="ethereal" name="genre">Ethereal<br>
 				</form>
 				<br/>
 			</div>
-		</span>
-		<div style="float: left; clear: both">
-			<span>
-					<button id="simulate">Simulate</button>
+		<div id="center">
+			<div id="head"><h1>Conway's Synthesizer</div>
+			<div class="grid_container" id="container"><span id="indicator"></span></div>
+		</div>
+			<div id="buttons">
+				<span>
+					<button id="simulate">Play Music</button>
 					<button id="stop"> Stop All </button>
-					<button id="pause">Pause</button>
-					<button id="random">Random</button>
-					<button id="clear">Clear</button>
-			</span>
+					<button id="pause">Still Frame</button>
+					<button id="random">Random Start</button>
+					<button id="clear">Reset</button>
+				</span>
+				</div>
 		</div>
 	</body>
 </html> 

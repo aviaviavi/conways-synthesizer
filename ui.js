@@ -120,7 +120,7 @@ $(document).ready(function () {
 		});
 
 		var makeButtonsSmaller = function(button){
-			$(button).css({"font-size":"12px", "width":"92px"});
+			$(button).css({"font-size":"14px", "width":"92px", "height" : "50px", "text-align" : "center"});
 		}
 
 		buttons.map(makeButtonsSmaller);
