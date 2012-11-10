@@ -27,7 +27,7 @@
    /* pulse a sound, which starts and stops a sound. Currently stops it after 120 ms, however this should depend on a bpm variable.*/
 		this.pulseSound = function(frequency, audiolet) {
 			var soundData = this.makeSound(frequency, audiolet);
-			setTimeout(function(){tones.stopAndDestroySound(soundData, audiolet.output)}, interval/8);
+			setTimeout(function(){tones.stopAndDestroySound(soundData, audiolet.output)}, interval/16);
 		}
 
 	};
