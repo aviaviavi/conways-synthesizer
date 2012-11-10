@@ -17,6 +17,8 @@
 			padding: 6px;
 			background-color: #111111;
 			border-radius: 7px;
+			float: left;
+			display: inline-block;
 		}
 	</style>
 
@@ -26,10 +28,21 @@
 	<script src="ui.js"></script>
 
 	<body>
-		<div class="grid_container" id="container"></div>
-		<span style="margin: 160px">
-				<button id="simulate">Simulate</button>
-				<button id="stop"> Stop </button>
+		<span>
+			<div class="grid_container" id="container"></div>
+			<div style="float: left; display: inline-block; margin: 30px" >
+				<p>
+		    		<label for="amount">BPM:</label>
+		    		<input type="text" id="amount" style="border: 0; color: #f6931f; font-weight: bold;" />
+				</p>
+				<div id="slider-vertical" style="height: 200px;"></div>
+			</div>
 		</span>
+		<div style="float: left; clear: both">
+			<span style="margin: 160px">
+					<button id="simulate">Simulate</button>
+					<button id="stop"> Stop </button>
+			</span>
+		</div>
 	</body>
 </html> 

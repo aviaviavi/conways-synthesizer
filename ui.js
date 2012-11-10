@@ -1,7 +1,9 @@
 var boxes = [];
 var size = 16;
 var running = false;
+//our pointer to the setInterval call on timestep()
 var simulateThread;
+var isDown = false;
 
 for (i = 0; i < 16; i++) {
 	boxes.push([]);
@@ -16,7 +18,6 @@ $(document).ready(function () {
 			string += "<div class='square' id=" + x + "x" + y + " ></div>";
 			currBox = new box(x, y);
 			boxes[x].push(currBox);
-			//currBox.generateNeighbors();
 		}
 		string += "</span>";
 		$("#container").append(string);
@@ -37,6 +38,31 @@ $(document).ready(function () {
 			primary: "ui-icon-stop"
 		}
 		}).click(function() {console.log('stopped'); running = false; clearInterval(simulateThread)});
+
+	$( "#slider-vertical" ).slider({
+            orientation: "vertical",
+            range: "min",
+            min: 150,
+            max: 300,
+            value: 240,
+            slide: function( event, ui ) {
+                $( "#amount" ).val( ui.value );
+                running = false; 
+                clearInterval(simulateThread);
+                simulate();
+
+            }
+        });
+        $( "#amount" ).val( $( "#slider-vertical" ).slider( "value" ) );
+
+
+		$(document).mousedown(function() {
+		    isDown = true;      // When mouse goes down, set isDown to true
+		    console.log('mousedown');
+		}).mouseup(function() {
+			isDown = false;    // When mouse goes up, set isDown to false
+			console.log('mouseup');
+		});
 
 });
 
@@ -91,15 +117,17 @@ var box = function(x, y) {
 	}
 }
 
+//called at the beggining to make all the squares buttons
 buttonify = function () {
 	for (x = 0; x < 16; x++) {
 		for (y = 0; y < 16; y++) {
 			boxes[x][y].generateNeighbors();
 			makeButton(x, y);
-		}
+		} 
 	}
 }
 
+//makes an individual square a button
 makeButton = function (x, y) {
 	var box = boxes[x][y];
 	$("#" + x + "x" + y).click(function () {
@@ -109,7 +137,7 @@ makeButton = function (x, y) {
 
 simulate = function() {
 	if (!running) {
-		simulateThread = setInterval(function() {timeStep();}, 1000);
+		simulateThread = setInterval(function() {timeStep();}, 60000*16/($("#amount").val()));
 		running = true;
 	}
 }
