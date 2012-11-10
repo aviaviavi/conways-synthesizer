@@ -27,7 +27,7 @@ $(document).ready(function () {
 	}
 	buttonify();
 
-	$("#simulate").button().click(function() {simulate();});
+	$("#simulate").button().click(function() {simulate(); player.play(boxes);});
 
 	$("#stop").button().click(function() {
 			clearInterval(metronome);
