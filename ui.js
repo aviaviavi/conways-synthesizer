@@ -65,6 +65,17 @@ $(document).ready(function () {
 			console.log('mouseup');
 		});
 
+		$("#random").button().click(function() {
+			var randomize = function(box) {
+				if (Math.random() < 3.0/16.0) {
+					box.swap();
+				}
+			}
+			for (column = 0; column < size; column++) {
+				boxes[column].map(randomize);
+			}
+		});
+
 });
 
 var box = function(x, y) {
