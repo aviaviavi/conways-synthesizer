@@ -35,9 +35,9 @@
 
     	/* stops the sound, and removes it from the audiolet controller */
 		this.stopAndDestroySound = function(soundData, output) {
-        		soundData.sound.disconnect(output);
+        		soundData.sound.disconnect(soundData.gain);
         		soundData.gain.disconnect(output);
-        		soundData.delay.disconnect(output);
+        		soundData.delay.disconnect(soundData.gain);
         		soundData.sound.remove();
         		soundData.delay.remove();
         		soundData.gain.remove();
