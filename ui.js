@@ -6,7 +6,7 @@ var simulateThread;
 var isDown = false;
 var interval;
 var majorKey = true;
-var buttons = ["#simulate", "#stop", "#pause", "#random", "#clear"];
+var buttons = ["#simulate", "#chordprog", "#stop", "#pause", "#random", "#clear"];
 var waveform = "sine";
 var runningMusic = false;
 var clipFactor = 16;
@@ -38,13 +38,23 @@ $(document).ready(function () {
 			running = false; 
 			runningMusic = false;
 			$("#slider-vertical").slider("option", "disabled", false);
-			clearInterval(simulateThread)
+			clearInterval(simulateThread);
+			if (chordprogression) {
+				clearInterval(chordprogression);
+				majorKey = true;
+			}
 		});
 
 	$("#pause").button().click(function() {
 		$("#slider-vertical").slider("option", "disabled", true);
 		running = false;
 		clearInterval(simulateThread);
+	});
+
+/* simulate, but with a chord change every two measures. */
+	$("#chordprog").button().click(function () {
+		simulate();
+		chordprogression = setInterval(function () {majorKey = !majorKey}, 2*interval);
 	});
 
 	$( "#slider-vertical" ).slider({
